@@ -3,5 +3,7 @@
 #
 #
 class PagesController < ApplicationController
-  def home; end
+  def home
+    @projects = Project.all
+  end
 end
