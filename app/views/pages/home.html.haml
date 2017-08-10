@@ -1,52 +1,58 @@
 .row
   .column
-    .row
-      .column
-        = form_tag root_path, class: 'filter-form' do
-          = label_tag :projects
-          = select_tag :projects, options_for_select(['Project 1', 'Project 2'])
-          = label_tag :releases
-          = select_tag :releases, options_for_select(['Release 1', 'Release 2'])
+    .text-center
+      = label_tag :projects, 'Select project'
 
-    .row.stories-wrapper.small-up-1.medium-up-2.large-up-2
-      .columns.column-block
-        .story
-          .story__title
-            %p UPGRADE NEW PROJECTS TO Es6: As a developer I would like to upgrade the National-Library app so that I can future proof the app and not fall behind on upgrades.
-          .story__description
-            Processing by PagesController#home as HTML
-      .columns.column-block
-        .story
-          .story__title
-            %p UPGRADE NEW PROJECTS TO Es6: As a developer I would like to upgrade the National-Library app so that I can future proof the app and not fall behind on upgrades.
-          .story__description
-            Processing by PagesController#home as HTML
-      .columns.column-block
-        .story
-          .story__title
-            %p UPGRADE NEW PROJECTS TO Es6: As a developer I would like to upgrade the National-Library app so that I can future proof the app and not fall behind on upgrades.
-          .story__description
-            Processing by PagesController#home as HTML
-      .columns.column-block
-        .story
-          .story__title
-            %p UPGRADE NEW PROJECTS TO Es6: As a developer I would like to upgrade the National-Library app so that I can future proof the app and not fall behind on upgrades.
-          .story__description
-            Processing by PagesController#home as HTML
-      .columns.column-block
-        .story
-          .story__title
-            %p UPGRADE NEW PROJECTS TO Es6: As a developer I would like to upgrade the National-Library app so that I can future proof the app and not fall behind on upgrades.
-          .story__description
-            Processing by PagesController#home as HTML
-      .columns.column-block
-        .story
-          .story__title
-            %p UPGRADE NEW PROJECTS TO Es6: As a developer I would like to upgrade the National-Library app so that I can future proof the app and not fall behind on upgrades.
-          .story__description
-            Processing by PagesController#home as HTML
+      - @projects.each do |project|
+        = link_to project.name, project_releases_path(project_id: project.id), class: 'button large'
 
-    .row
-      .column
-        .text-center
-          = button_tag 'Print!', class: 'button large'
+    / .row
+    /   .column.medium-6
+    /     = form_tag root_path, class: 'filter-form' do
+    /       = label_tag :projects
+    /       = select_tag :projects, options_for_select(@projects.map { |project| [project.name, project.id] })
+    /       = label_tag :releases
+    /       = select_tag :releases, options_for_select(['Release 1', 'Release 2'])
+
+    / .row.stories-wrapper.small-up-1.medium-up-2.large-up-2
+    /   .columns.column-block
+    /     .story
+    /       .story__title
+    /         %p UPGRADE NEW PROJECTS TO Es6: As a developer I would like to upgrade the National-Library app so that I can future proof the app and not fall behind on upgrades.
+    /       .story__description
+    /         Processing by PagesController#home as HTML
+    /   .columns.column-block
+    /     .story
+    /       .story__title
+    /         %p UPGRADE NEW PROJECTS TO Es6: As a developer I would like to upgrade the National-Library app so that I can future proof the app and not fall behind on upgrades.
+    /       .story__description
+    /         Processing by PagesController#home as HTML
+    /   .columns.column-block
+    /     .story
+    /       .story__title
+    /         %p UPGRADE NEW PROJECTS TO Es6: As a developer I would like to upgrade the National-Library app so that I can future proof the app and not fall behind on upgrades.
+    /       .story__description
+    /         Processing by PagesController#home as HTML
+    /   .columns.column-block
+    /     .story
+    /       .story__title
+    /         %p UPGRADE NEW PROJECTS TO Es6: As a developer I would like to upgrade the National-Library app so that I can future proof the app and not fall behind on upgrades.
+    /       .story__description
+    /         Processing by PagesController#home as HTML
+    /   .columns.column-block
+    /     .story
+    /       .story__title
+    /         %p UPGRADE NEW PROJECTS TO Es6: As a developer I would like to upgrade the National-Library app so that I can future proof the app and not fall behind on upgrades.
+    /       .story__description
+    /         Processing by PagesController#home as HTML
+    /   .columns.column-block
+    /     .story
+    /       .story__title
+    /         %p UPGRADE NEW PROJECTS TO Es6: As a developer I would like to upgrade the National-Library app so that I can future proof the app and not fall behind on upgrades.
+    /       .story__description
+    /         Processing by PagesController#home as HTML
+
+    / .row
+    /   .column
+    /     .text-center
+    /       = button_tag 'Print!', class: 'button large'
