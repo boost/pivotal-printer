@@ -1,0 +1,9 @@
+.projects {
+  label {
+    font-size: 2rem;
+  }
+
+  @include element('project') {
+    width: 50%;
+  }
+}
