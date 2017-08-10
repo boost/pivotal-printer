@@ -2,7 +2,9 @@
   .column
     .row
       .column
-        = form_tag root_path do
+        = form_tag root_path, class: 'filter-form' do
+          = label_tag :projects
+          = select_tag :projects, options_for_select(['Project 1', 'Project 2'])
           = label_tag :releases
           = select_tag :releases, options_for_select(['Release 1', 'Release 2'])
 
