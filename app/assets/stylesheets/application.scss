@@ -11,10 +11,14 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_self
-//= require foundation_and_overrides
-
  */
 
 // Third-party
 @import 'foundation_and_overrides';
 @import 'font-awesome';
+
+// Mixins
+@import 'mixins/bem';
+
+// Blocks
+@import 'blocks/navigation';
