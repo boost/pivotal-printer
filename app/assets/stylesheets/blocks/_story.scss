@@ -1,0 +1,9 @@
+.story {
+  background: $white;
+  border: 1px solid $gallery;
+  padding: 1rem;
+
+  @include element('title') {
+    font-weight: 500;
+  }
+}
