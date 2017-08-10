@@ -13,6 +13,10 @@
  *= require_self
  */
 
+// Variables
+@import 'variables/colors';
+@import 'variables/utils';
+
 // Third-party
 @import 'foundation_and_overrides';
 @import 'font-awesome';
@@ -21,4 +25,6 @@
 @import 'mixins/bem';
 
 // Blocks
+@import 'blocks/container';
 @import 'blocks/navigation';
+@import 'blocks/story';
