@@ -7,6 +7,7 @@ end
 
 gem 'font-awesome-rails'
 gem 'foundation-rails'
+gem 'haml-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'puma', '~> 3.7'
