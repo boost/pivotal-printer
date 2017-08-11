@@ -18,6 +18,8 @@ class StoriesController < ApplicationController
     session[:stories][project_id] ||= []
     session[:stories][project_id] << story_id_key unless session[:stories][project_id].include?(story_id_key)
 
+    set_stories_to_print
+
     respond_to :js
   end
 
@@ -27,6 +29,8 @@ class StoriesController < ApplicationController
     session[:stories] ||= {}
     session[:stories][project_id] ||= []
     session[:stories][project_id].delete(story_id_key)
+
+    set_stories_to_print
 
     respond_to :js
   end

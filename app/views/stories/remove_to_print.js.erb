@@ -1,3 +1,6 @@
 $("#story_<%= params[:story_id] %> .story__actions").html("<%= j render partial: 'releases/story_actions', locals: { story_id: params[:story_id] } %>")
 $(".print-cart #story_<%= params[:story_id] %>").parent().remove();
 $("#story_<%= params[:story_id] %>").focus();
+
+$('#story_print_wrapper').html('');
+$('#story_print_wrapper').html("<%= j render partial: 'releases/story_print', collection: @stories_to_print %>");

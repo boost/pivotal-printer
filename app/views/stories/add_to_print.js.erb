@@ -2,3 +2,6 @@ $("#story_<%= params[:story_id] %> .story__actions").html("<%= j render partial:
 let storyEl = $("#story_<%= params[:story_id] %>").parent().clone();
 $("#story_<%= params[:story_id] %>").focus();
 $(".print-cart").append(storyEl);
+
+$('#story_print_wrapper').html('');
+$('#story_print_wrapper').html("<%= j render partial: 'releases/story_print', collection: @stories_to_print %>");
