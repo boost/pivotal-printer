@@ -6,4 +6,8 @@
   @include element('title') {
     font-weight: 500;
   }
+
+  @include element('description') {
+    word-break: break-word;
+  }
 }
