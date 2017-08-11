@@ -1,7 +1,10 @@
 .columns.column-block
-  .story{ 'data-equalizer-watch': '', id: "story_#{story.id}" }
+  .story{ 'data-equalizer-watch': '', id: "story_#{story.id}", tabindex: '0' }
     %h5.story__title
       = story.name
+
+    - if story.try(:estimate)
+      %p.story__details= "Size: #{story.try(:estimate)}"
     - if story.try(:description)
       %p.story__description
         = story.description.truncate(200)

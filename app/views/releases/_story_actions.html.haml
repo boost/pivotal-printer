@@ -1,6 +1,6 @@
 - project_id = params[:project_id]
 
 - if session[:stories][project_id].include?("id:#{story_id}")
-  = link_to 'Remove to print', project_story_remove_to_print_path(story_id: story_id), class: 'button small secondary', remote: true, method: :post
+  = link_to 'Remove to print', project_story_remove_to_print_path(story_id: story_id), class: 'button small alert', remote: true, method: :post
 - else
-  = link_to 'Add to print', project_story_add_to_print_path(story_id: story_id), class: 'button small secondary', remote: true, method: :post
+  = link_to 'Add to print', project_story_add_to_print_path(story_id: story_id), class: 'button small success', remote: true, method: :post
