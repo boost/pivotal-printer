@@ -17,6 +17,7 @@
 @import 'variables/typography';
 @import 'variables/colors';
 @import 'variables/utils';
+@import 'variables/print';
 
 // Third-party
 @import 'foundation_and_overrides';
@@ -30,6 +31,7 @@
 @import 'blocks/navigation';
 @import 'blocks/releases-filter';
 @import 'blocks/story';
+@import 'blocks/story-print';
 @import 'blocks/projects';
 @import 'blocks/stories-wrapper';
 @import 'blocks/print-cart';

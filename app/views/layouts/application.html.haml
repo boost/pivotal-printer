@@ -3,9 +3,13 @@
   = render 'shared/head'
 
   %body
-    #offCanvas.off-canvas.position-right{'data-off-canvas' => ""}
+    #off_canvas.off-canvas.position-right.hide-for-print{ 'data-off-canvas': '' }
       = render 'shared/print_cart'
-    .off-canvas-content{'data-off-canvas-content' => ""}
+    .off-canvas-content{ 'data-off-canvas-content': '' }
       = render 'shared/navigation'
-      .container
+      .container.hide-for-print
         = yield
+
+      .show-for-print
+        .row.small-up-2
+          = render partial: 'releases/story_print', collection: @stories_to_print

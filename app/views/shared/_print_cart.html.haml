@@ -1,3 +1,5 @@
 .print-cart
   .print-cart__title.text-center Stories to print
+  .text-center
+    %button.button{ onclick: "$('#off_canvas').foundation('close'); window.print(); " } Print
   = render partial: 'releases/story', collection: @stories_to_print

@@ -1,0 +1,9 @@
+- if story = story_print
+  .columns.column-block
+    .story-print
+      %h6.story-print__title
+        = story.name
+
+      - if story.try(:description)
+        %p.story-print__description
+          = story.description

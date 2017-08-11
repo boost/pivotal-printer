@@ -1,0 +1,18 @@
+.story-print {
+  background: $white;
+  border: 1px solid $gallery;
+  padding: 1rem;
+
+  @include element('title') {
+    font-weight: 500;
+    border-bottom: 1px solid $gallery;
+    padding-bottom: 1rem;
+    font-size: 1rem;
+  }
+
+  @include element('description') {
+    word-break: break-word;
+    padding-bottom: 1rem;
+    font-size: .75rem;
+  }
+}
