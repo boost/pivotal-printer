@@ -1,5 +1,8 @@
 .top-bar.navigation
   .top-bar-title
-    %button.button{'data-toggle' => 'offCanvas', type: 'button'} Open Menu
     = link_to root_path, class: 'strong' do
       = t('app.title')
+  .top-bar-right
+    %ul.menu
+      %li
+        %button.button{'data-toggle' => 'offCanvas', type: 'button'} Stories to print
