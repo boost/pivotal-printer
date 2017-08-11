@@ -3,7 +3,9 @@
   = render 'shared/head'
 
   %body
-    = render 'shared/navigation'
-
-    .container
-      = yield
+    #offCanvas.off-canvas.position-left{'data-off-canvas' => ""}
+      = render 'shared/print_cart'
+    .off-canvas-content{'data-off-canvas-content' => ""}
+      = render 'shared/navigation'
+      .container
+        = yield

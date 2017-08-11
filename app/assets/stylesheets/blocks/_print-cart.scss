@@ -1,0 +1,15 @@
+.print-cart {
+  @include element('title') {
+    font-size: 1.25rem;
+    padding: 1rem;
+  }
+
+  .story {
+    .story__title {
+      font-size: .65rem;
+    }
+    .story__description {
+      font-size: .65rem;
+    }
+  }
+}
