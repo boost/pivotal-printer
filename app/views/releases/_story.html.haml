@@ -1,7 +1,10 @@
 .columns.column-block
-  .story{ 'data-equalizer-watch': '' }
+  .story{ 'data-equalizer-watch': '', id: "story_#{story.id}" }
     %h5.story__title
       = story.name
     - if story.try(:description)
       %p.story__description
         = story.description.truncate(200)
+
+    .story__actions
+      = render partial: 'releases/story_actions', locals: { story_id: story.id }

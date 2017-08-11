@@ -3,7 +3,10 @@
 @import 'settings';
 @import 'foundation';
 
-$body-background: $alabaster;
+// 1. Global
+// ---------
+$body-font-family: 'ProximaNova', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$body-background: $seashell;
 
 // If you'd like to include motion-ui the foundation-rails gem comes prepackaged with it, uncomment the 3 @imports, if you are not using the gem you need to install the motion-ui sass package.
 //

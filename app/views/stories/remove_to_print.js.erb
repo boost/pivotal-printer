@@ -1,0 +1,1 @@
+$("#story_<%= params[:story_id] %> .story__actions").html("<%= j render partial: 'releases/story_actions', locals: { story_id: params[:story_id] } %>")

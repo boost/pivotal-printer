@@ -5,9 +5,17 @@
 
   @include element('title') {
     font-weight: 500;
+    border-bottom: 1px solid $gallery;
+    padding-bottom: 1rem;
   }
 
   @include element('description') {
+    word-break: break-word;
+    border-bottom: 1px solid $gallery;
+    padding-bottom: 1rem;
+  }
+
+  @include element('actions') {
     word-break: break-word;
   }
 }

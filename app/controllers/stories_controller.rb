@@ -10,4 +10,30 @@ class StoriesController < ApplicationController
 
     respond_to :html, :js
   end
+
+  def add_to_print
+    project_id = params[:project_id]
+
+    session[:stories] ||= {}
+    session[:stories][project_id] ||= []
+    session[:stories][project_id] << story_id_key unless session[:stories][project_id].include?(story_id_key)
+
+    respond_to :js
+  end
+
+  def remove_to_print
+    project_id = params[:project_id]
+
+    session[:stories] ||= {}
+    session[:stories][project_id] ||= []
+    session[:stories][project_id].delete(story_id_key)
+
+    respond_to :js
+  end
+
+  private
+
+  def story_id_key
+    "id:#{params[:story_id]}"
+  end
 end
