@@ -1,0 +1,7 @@
+.columns.column-block
+  .story{ 'data-equalizer-watch': '' }
+    %h5.story__title
+      = story.name
+    - if story.try(:description)
+      %p.story__description
+        = story.description.truncate(200)

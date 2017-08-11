@@ -1,0 +1,4 @@
+$('.stories-wrapper').html('');
+$('.stories-wrapper').html("<%= j render partial: 'releases/story', collection: @stories -%>");
+
+Foundation.reInit(['equalizer']);
