@@ -1,11 +1,19 @@
-@page {
-  size: auto;   /* auto is the initial value */
+@media print {
+  /**
+   *
+   * Disable all transitions
+   */
+  * {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -ms-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+    visibility: visible;
+    opacity: 1;
+  }
 
-  /* this affects the margin in the printer settings */
-  margin: 25mm 25mm 25mm 25mm;
-}
-
-body {
-  /* this affects the margin on the content before sending to printer */
-  margin: 0px;
+  @page {
+    margin: 3cm;
+  }
 }
