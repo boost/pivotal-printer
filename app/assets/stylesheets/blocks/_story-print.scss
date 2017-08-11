@@ -12,6 +12,7 @@
 
   @include element('description') {
     word-break: break-word;
+    overflow: hidden;
     padding-bottom: 1rem;
     font-size: .75rem;
   }
