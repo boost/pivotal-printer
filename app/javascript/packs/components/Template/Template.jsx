@@ -34,6 +34,10 @@ class Template extends Component {
                              </p>
                              <p>N/A</p>
                              <p>
+                               <strong>How to test</strong>
+                             </p>
+                             <p>N/A</p>
+                             <p>
                                <strong>Documentation</strong>
                              </p>
                              <p>N/A</p>
