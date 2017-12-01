@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
-import './index.css';
+import './App.scss';
 
 import Whiteboard from './components/Whiteboard/Whiteboard';
 import Template  from './components/Template/Template';
