@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.story {
+  cursor: pointer;
+}
+
+.story:hover {
+  text-decoration: underline;
+}
+
+.project {
+  float: right;
+}
+
+.story-status {
+  float: left;
+}
+
+.whiteboard {
+  padding-top: 2rem;
+}
+
+.whiteboard h1 {
+  text-align: center;
+}

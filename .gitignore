@@ -17,3 +17,6 @@
 
 .env
 /.ruby-version
+/public/packs
+/public/packs-test
+/node_modules
