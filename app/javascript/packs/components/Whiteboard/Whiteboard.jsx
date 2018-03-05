@@ -101,7 +101,7 @@ export default class Whiteboard extends Component {
   render() {
     const { storyState } = this.props;
     const { isOpen, selectedStory } = this.state;
-    const groups = ['dnz-services', 'dnz-systems', 'online channel', 'papers past', 'schools', 'natlib2', 'te-puna-foundation']
+    const groups = ['dnz-services', 'dnz-systems', 'sj-improv', 'metrics dashboard', 'online channel', 'papers past', 'schools', 'natlib2', 'te-puna-foundation']
 
     return (
             <div className="whiteboard">
