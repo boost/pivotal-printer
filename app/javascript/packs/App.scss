@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.story {
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.project {
+  float: right;
+}
+
+.story-status {
+  float: left;
+}
+
+.whiteboard {
+  padding-top: 2rem;
+
+  h1 {
+    text-align: center;
+  }
+}
+
+.App {
+  margin: 2rem;
+}
