@@ -35,3 +35,11 @@
 @import 'blocks/projects';
 @import 'blocks/stories-wrapper';
 @import 'blocks/print-cart';
+
+footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background-color: pink;
+  padding: 1rem;
+}

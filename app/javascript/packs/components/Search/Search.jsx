@@ -32,7 +32,7 @@ class Search extends Component {
       mode: 'cors',
       cache: 'default'
     };
-    myHeaders.append('X-TrackerToken', '65b40cc7808df73d3fb58b0b69c0e8d3');
+    myHeaders.append('X-TrackerToken', 'b8eaf842166fe3a4ab3684baf643a9bb');
     fetch(`https://www.pivotaltracker.com/services/v5/projects/152543/search?query=${query}`, myInit)
       .then(req => req.json())
       .then((search) => {
