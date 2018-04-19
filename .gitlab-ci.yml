@@ -1,0 +1,75 @@
+stages:
+  - build
+  - test
+  - promote
+  - deploy
+  - cleanup
+
+build-image:
+  image: docker
+  services:
+    - docker:dind
+  stage: build
+  only:
+    - web
+    - tags
+  script:
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
+    - docker build . -t registry.gitlab.com/boostnz/pivotal-printer:$CI_COMMIT_SHA --build-arg RAILS_ENV=test --build-arg NODE_ENV=test
+    - docker push registry.gitlab.com/boostnz/pivotal-printer:$CI_COMMIT_SHA
+
+test:
+  image: registry.gitlab.com/boostnz/pivotal-printer:$CI_COMMIT_SHA
+  stage: test
+  script:
+    - bundle exec rspec
+  only:
+    - web
+    - tags
+  dependencies:
+    - build-image
+
+promote-image:
+  stage: promote
+  image: docker
+  services:
+    - docker:dind
+  script:
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
+    - docker pull registry.gitlab.com/boostnz/pivotal-printer:$CI_COMMIT_SHA
+    - docker tag registry.gitlab.com/boostnz/pivotal-printer:$CI_COMMIT_SHA registry.gitlab.com/boostnz/pivotal-printer:$CI_COMMIT_REF_NAME
+    - docker push registry.gitlab.com/boostnz/pivotal-printer:$CI_COMMIT_REF_NAME
+  dependencies:
+    - test
+
+deploy-uat:
+  stage: deploy
+  script:
+    - echo "Deploy review app $CI_COMMIT_REF_NAME"
+  except:
+    - master
+  dependencies:
+    - promote-image
+
+deploy-staging:
+  stage: deploy
+  script:
+    - echo "Deploy to Staging $CI_COMMIT_REF_NAME"
+  only:
+    - tag
+  dependencies:
+    - promote-image
+
+deploy-production:
+  stage: deploy
+  script:
+    - echo "Deploy to Production $CI_COMMIT_REF_NAME"
+  only:
+    - master
+  dependencies:
+    - promote-image
+
+remove-images:
+  stage: cleanup
+  script:
+    - echo "Clean up?"
