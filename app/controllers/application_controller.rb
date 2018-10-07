@@ -4,6 +4,7 @@
 #
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  http_basic_authenticate_with name: 'boost-devs', password: 'Vapour12'
 
   def set_stories_to_print
     project_id = params[:project_id]

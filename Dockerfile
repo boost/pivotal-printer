@@ -15,9 +15,9 @@ RUN apt-get update -qq && apt-get install -y yarn
 
 # ENV
 ARG RAILS_ENV
-ENV RAILS_ENV=$RAILS_ENV
+ENV RAILS_ENV=production
 ARG NODE_ENV
-ENV NODE_ENV=$NODE_ENV
+ENV NODE_ENV=production
 
 WORKDIR /app
 ADD . /app

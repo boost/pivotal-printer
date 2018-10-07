@@ -4,16 +4,12 @@ body {
   font-family: sans-serif;
 }
 
-.story {
-  cursor: pointer;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
 .project {
   float: right;
+
+  a {
+    margin-left: 1rem;
+  }
 }
 
 .story-status {
@@ -30,4 +26,9 @@ body {
 
 .App {
   margin: 2rem;
+}
+
+.hidden-story {
+  position: absolute;
+  top: -9999999px;
 }
