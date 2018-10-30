@@ -99,10 +99,16 @@ class Whiteboard extends Component {
           const storyLabels = story.labels.map((a) => a.name);
 
           // Remove generic labels if there is another one
-          const storyWithoutGenericLabels =
+          let storyWithoutGenericLabels =
             storyLabels.length > 1
+              ? _.without(storyLabels, 'dnz-systems', 'dnz-services', 'inv-srv-dnz', 'inv-sys-cloud', 'inv-sys-sj', 'inv-sys-maint')
+              : storyLabels;
+
+          if (storyWithoutGenericLabels.length === 0) {
+            storyWithoutGenericLabels = storyLabels.length > 1
               ? _.without(storyLabels, 'dnz-systems', 'dnz-services')
               : storyLabels;
+          }
 
           story['labels'] = storyWithoutGenericLabels.map((a) => {
             return { name: a };
@@ -197,6 +203,7 @@ class Whiteboard extends Component {
           <p>
             <strong>Documentation</strong>
           </p>
+          <p>Cloud story? Did you update the spreadsheet? :D</p>
           <p>N/A</p>
           <br />
           <p>
@@ -228,7 +235,6 @@ class Whiteboard extends Component {
       <div className="whiteboard">
         <h1>Whiteboard</h1>
         {labels
-          .sort((a, b) => (a === 'design' ? 1 : -1))
           .map((label) => this.renderStoryGroup(storyState, label))}
 
         <Snackbar

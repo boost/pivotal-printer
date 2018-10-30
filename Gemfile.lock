@@ -235,6 +235,7 @@ DEPENDENCIES
   dotenv-rails
   font-awesome-rails
   foundation-rails
+  haml
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails
@@ -252,4 +253,4 @@ DEPENDENCIES
   webpacker
 
 BUNDLED WITH
-   1.16.1
+   1.16.3
