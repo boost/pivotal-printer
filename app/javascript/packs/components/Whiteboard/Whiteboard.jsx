@@ -139,7 +139,7 @@ class Whiteboard extends Component {
         return (
           <p key={story.id} className={classes.item}>
             <span>{_.capitalize(name)}</span>
-            <span> ({story.users.map((u) => u.person.name.split(' ')[0]).join(', ')})</span>
+            <span> ({story.users.filter((u) => !!u).map((u) => u.person.name.split(' ')[0]).join(', ')})</span>
             <Tooltip title="Copy R4A title">
               <IconButton
                 className={classes.copyTitle}
