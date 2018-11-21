@@ -49,7 +49,7 @@ export default class Whiteboard extends Component {
       mode: 'cors',
       cache: 'default'
     };
-    myHeaders.append('X-TrackerToken', 'b8eaf842166fe3a4ab3684baf643a9bb');
+    myHeaders.append('X-TrackerToken', 'a8104e0f2cbcedd33f00ff4f94105df6');
     fetch(`https://www.pivotaltracker.com/services/v5/projects/${projectId}/iterations.json?scope=current`, myInit)
       .then(req => req.json())
       .then(iteration => {
