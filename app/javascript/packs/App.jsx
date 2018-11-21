@@ -15,7 +15,7 @@ class App extends Component {
     super(props);
     this.state = {
       storyState: 'all',
-      projectId: '152543',
+      projectId: null,
     };
   }
 
@@ -54,9 +54,12 @@ class App extends Component {
                 >
                   <MenuItem value="152543">DNZ</MenuItem>
                   <MenuItem value="1646331">Natlib</MenuItem>
+                  <MenuItem value="2223004">Archives</MenuItem>
                 </Select>
               </div>
-              <Whiteboard storyState={this.state.storyState} projectId={this.state.projectId} />
+              {
+                this.state.projectId && <Whiteboard storyState={this.state.storyState} projectId={this.state.projectId} />
+              }
             </div>
     );
   }
