@@ -119,6 +119,7 @@ class Whiteboard extends Component {
         this.setState({
           stories: stories,
           labels: labels,
+          stories: stories
         });
       });
   }
