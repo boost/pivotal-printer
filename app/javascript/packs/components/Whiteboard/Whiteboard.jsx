@@ -69,49 +69,65 @@ export default class Whiteboard extends Component {
         })
         stories = stories.sort((a, b) => (a.owner_ids[0] < b.owner_ids[0] ? -1 : 1));
         this.setState({
-                      stories: stories
+          stories: stories
         });
       })
   }
 
-  renderStoryGroup(storyState, group) {
-    const stories = this.state.stories
-      .filter(story => (story.current_state === storyState || storyState === 'all'))
-      .filter(story => story.labels.some(label => label.name === group))
-      .map((story) => {
-        const name = story.name.split(':')[0];
-        return (
-                <p key={story.id} className="story" onClick={this.handleClickOpen.bind(this,story)}>
-                  <span>{_.capitalize(name)}</span>
-                  <span> ({story.users.map(u => (u ? u.person.name.split(' ')[0] : ['No User'])).join(', ')})</span>
-                </p>
-        );
-      });
+  selectStoriesByGroup(group, stories) {
+    return 
+  }
 
-    if (stories.length > 0) {
-      return (
-              <div>
-                <h3>{_.startCase(group)}</h3>
-                {stories}
-              </div>
-      )
-    }
+  generateStoryGroups() {
+    const storyState = this.props.storyState;
+    const stories = this.state.stories;
+    const storyGroups = {other: []}
+    stories
+      .map(story => {
+        if (story.current_state === storyState || storyState === 'all') {
+            //  find one group and put story in story grpups
+          let group = story.labels.length > 0 ? story.labels[0].name : 'other'
+          if (!storyGroups[group]) {storyGroups[group] = []}
+          storyGroups[group].push((
+            <p key={story.id} className="story" onClick={this.handleClickOpen.bind(this,story)}>
+              <span>{_.capitalize(story.name.split(':')[0])}</span>
+              <span> ({story.users.map(u => (u ? u.person.name.split(' ')[0] : ['No User'])).join(', ')})</span>
+            </p>
+          ));
+        }
+      })
+
+    const storyGroupsArray = []
+    _.forIn(storyGroups, (stories, storyGroupTitle) => {
+      if (stories.length > 0) {
+          // debugger
+        storyGroupsArray.push((
+          <div>
+            <h3>{_.startCase(storyGroupTitle)}</h3>
+            {stories.map(s => s)}
+          </div>
+        ))
+      }
+    })
+
+    return storyGroupsArray
   }
 
   render() {
-    const { storyState } = this.props;
     const { isOpen, selectedStory } = this.state;
-    const groups = ['dnz-services', 'dnz-systems', 'sj-improv', 'metrics dashboard', 'online channel', 'papers past', 'schools', 'natlib2', 'te-puna-foundation']
-
+    let storyGroups = this.generateStoryGroups();
+    // debugger
     return (
             <div className="whiteboard">
               <h1>Whiteboard</h1>
-              {groups.map(group => this.renderStoryGroup(storyState, group))}
+              {storyGroups}
+
               { isOpen && <Template
-                selectedStory={selectedStory}
-                isOpen={isOpen}
-                onClose={this.handleCloseDialog}
-              /> }
+                 selectedStory={selectedStory}
+                 isOpen={isOpen}
+                 onClose={this.handleCloseDialog}
+                />
+               }
             </div>
     )
   }
