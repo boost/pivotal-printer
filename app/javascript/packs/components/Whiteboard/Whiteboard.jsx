@@ -83,7 +83,7 @@ export default class Whiteboard extends Component {
         return (
                 <p key={story.id} className="story" onClick={this.handleClickOpen.bind(this,story)}>
                   <span>{_.capitalize(name)}</span>
-                  <span> ({story.users.map(u => u.person.name.split(' ')[0]).join(', ')})</span>
+                  <span> ({story.users.map(u => (u ? u.person.name.split(' ')[0] : ['No User'])).join(', ')})</span>
                 </p>
         );
       });
