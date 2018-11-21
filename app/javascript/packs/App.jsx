@@ -12,7 +12,7 @@ class App extends Component {
     super(props);
     this.state = {
       storyState: 'all',
-      projectId: '152543',
+      projectId: null,
     };
   }
 
@@ -30,31 +30,46 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="story-status">
-          <Select value={this.state.storyState} onChange={this.selectStoryType()}>
-            <MenuItem value="all">All stories</MenuItem>
-            <MenuItem value="accepted">Accepted</MenuItem>
-            <MenuItem value="delivered">Delivered</MenuItem>
-            <MenuItem value="started">Started</MenuItem>
-          </Select>
-        </div>
-        <div className="project">
-          <Button
-            variant="contained"
-            href="https://basecamp.com/1723294/projects/8491945/messages/new"
-            target="_blank">
-            New message
-          </Button>
-          <Button
-            variant="contained"
-            href="https://basecamp.com/1723294/projects/8491945/documents/new"
-            target="_blank">
-            New document
-          </Button>
-        </div>
-        <Whiteboard storyState={this.state.storyState} projectId={this.state.projectId} />
-      </div>
+            <div className="App">
+              <div className="story-status">
+                <FormHelperText>Story status</FormHelperText>
+                <Select
+                  value={this.state.storyState}
+                  onChange={this.selectStoryType()}
+                >
+                  <MenuItem value="all">All</MenuItem>
+                  <MenuItem value="accepted">Accepted</MenuItem>
+                  <MenuItem value="delivered">Delivered</MenuItem>
+                  <MenuItem value="started">Started</MenuItem>
+                </Select>
+              </div>
+              <div className="project">
+                <FormHelperText>Project</FormHelperText>
+                <Select
+                  value={this.state.projectId}
+                  onChange={this.selectProjectId()}
+                >
+                  <MenuItem value="152543">DNZ</MenuItem>
+                  <MenuItem value="1646331">Natlib</MenuItem>
+                  <MenuItem value="2223004">Archives</MenuItem>
+                </Select>
+                <Button
+                  variant="contained"
+                  href="https://basecamp.com/1723294/projects/8491945/messages/new"
+                  target="_blank">
+                  New message
+                </Button>
+                <Button
+                  variant="contained"
+                  href="https://basecamp.com/1723294/projects/8491945/documents/new"
+                  target="_blank">
+                  New document
+                </Button>
+              </div>
+              {
+                this.state.projectId && <Whiteboard storyState={this.state.storyState} projectId={this.state.projectId} />
+              }
+            </div>
     );
   }
 }
