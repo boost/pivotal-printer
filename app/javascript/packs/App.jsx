@@ -6,13 +6,14 @@ import Whiteboard from './components/Whiteboard/Whiteboard';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
+import FormHelperText from '@material-ui/core/FormHelperText';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       storyState: 'all',
-      projectId: null,
+      projectId: '152543',
     };
   }
 
