@@ -113,7 +113,12 @@ class Whiteboard extends Component {
 
           return story;
         });
-        stories = stories.sort((a, b) => (a.owner_ids[0] < b.owner_ids[0] ? -1 : 1));
+        stories = stories.sort((a, b) => (a.owner_ids[0] < b.owner_ids[0] ? -1 : 1))
+                         .map(story => {
+                           if(story.labels.length === 0) story.labels = [{name: 'Other'}];
+                           return story
+                         });
+
         const labels = _.uniq(_.flatten(stories.map((s) => s.labels.map((l) => l.name))));
 
         this.setState({
