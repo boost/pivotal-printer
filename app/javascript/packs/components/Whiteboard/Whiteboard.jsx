@@ -70,13 +70,10 @@ class Whiteboard extends Component {
       mode: 'cors',
       cache: 'default',
     };
-    myHeaders.append('X-TrackerToken', 'b8eaf842166fe3a4ab3684baf643a9bb');
-    fetch(
-      `https://www.pivotaltracker.com/services/v5/projects/${projectId}/iterations.json?scope=current`,
-      myInit,
-    )
-      .then((req) => req.json())
-      .then((iteration) => {
+    myHeaders.append('X-TrackerToken', 'a8104e0f2cbcedd33f00ff4f94105df6');
+    fetch(`https://www.pivotaltracker.com/services/v5/projects/${projectId}/iterations.json?scope=current`, myInit)
+      .then(req => req.json())
+      .then(iteration => {
         stories = iteration[0].stories;
         return fetch(
           `https://www.pivotaltracker.com/services/v5/projects/${projectId}/memberships.json`,
@@ -116,12 +113,18 @@ class Whiteboard extends Component {
 
           return story;
         });
-        stories = stories.sort((a, b) => (a.owner_ids[0] < b.owner_ids[0] ? -1 : 1));
+        stories = stories.sort((a, b) => (a.owner_ids[0] < b.owner_ids[0] ? -1 : 1))
+                         .map(story => {
+                           if(story.labels.length === 0) story.labels = [{name: 'Other'}];
+                           return story
+                         });
+
         const labels = _.uniq(_.flatten(stories.map((s) => s.labels.map((l) => l.name))));
 
         this.setState({
           stories: stories,
           labels: labels,
+          stories: stories
         });
       });
   }
