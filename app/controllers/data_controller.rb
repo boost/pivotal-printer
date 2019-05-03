@@ -1,7 +1,11 @@
 class DataController < ApplicationController
   def index
+    client = TrackerApi::Client.new(token: 'a8104e0f2cbcedd33f00ff4f94105df6')
+    project  = client.project(params[:project_id].to_i)
+    story = project.story(params[:story_id].to_i)
+
     respond_to do |format|
-      format.json { render :json => Story.where(project_id: params[:project_id], release_id: params[:release_id]).to_json }
+      format.json { render :json => story.to_json }
     end
   end
 end
