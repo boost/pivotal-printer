@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'pages#home'
   resources 'whiteboard', only: :index
+  resources :data, only: :index
 
   resources :projects, only: :index do
     resources :releases, only: :index
