@@ -8,7 +8,11 @@ class StoriesController < ApplicationController
       Story.where(project_id: params[:project_id], release_id: params[:release_id])
     end
 
-    respond_to :html, :js
+    respond_to do |format|
+      format.html
+      format.js
+      format.json { render :json => Story.where(project_id: params[:project_id], release_id: params[:release_id]).to_json }
+    end
   end
 
   def add_to_print
