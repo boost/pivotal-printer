@@ -4,6 +4,11 @@ class DataController < ApplicationController
     project  = client.project(params[:project_id].to_i)
     story = project.story(params[:story_id].to_i)
 
-    render :json { story: story }
+    render :json => {
+      id: story.id,
+      name: story.name,
+      description: story.description,
+      owner: story&.owners.first.name
+    }
   end
 end
