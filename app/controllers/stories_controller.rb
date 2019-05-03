@@ -11,7 +11,7 @@ class StoriesController < ApplicationController
     respond_to do |format|
       format.html
       format.js
-      format.json { render :json => Story.where(project_id: params[:project_id], release_id: params[:release_id]).to_json }
+      format.json { render :json => Story.where(project_id: params[:project_id]).to_json }
     end
   end
 
